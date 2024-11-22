@@ -138,11 +138,10 @@ def singular(mean, var, test_loader):
         return loss, prob_density, absolute_diff
 
 
-def graph_test(model, test_loader):
+def graph_test(model, test_loader, numplots):
 
     model.eval()
 
-    numplots = 20
     numcols = 4
     numrows = int(np.ceil(numplots/numcols))
 
