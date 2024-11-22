@@ -4,13 +4,6 @@ ComNet is a TCN designed to predict a mean and variance for the returns on commo
 typically prices or indicators of the commodity itself along with related tickers such as other commodities, Forex, Bond yields etc.
 The idea behind this model was to quantify the confidence of the model in each of its own predictions in addition to just making those predictions.
 
-## Inputs
-
-I have provided some raw inputs in the Data folder. These inputs need to be processed before they can be used by the network, this is done in Financial_Data_Processing.
-Processing the data produces different feature dataframes, for example for different subsets of tickers or using technical indicators instead of price data.
-Different target dataframes are also produced, for example those for different commodities or those to match the technical indicator feature dataframes, in which some initial dates are omitted.
-Before the data is saved any price data is converted into a percentage return including the target price. All the Input data is saved under Data/Inputs.
-
 ## Network
 
 The network is a TCN largely based on the design of [Bai, Kolter, Koten](https://arxiv.org/abs/1803.01271) with some minor differences
@@ -22,6 +15,13 @@ this transformation was chosen such that for large values the transformation bec
 $y = (x+e^{-x/2})*\sigma(x)$,
 
 where $\sigma$ is the sigmoid function and $y$ is the output variance.
+
+## Inputs
+
+I have provided some raw inputs in the Data folder. These inputs need to be processed before they can be used by the network, this is done in Financial_Data_Processing.
+Processing the data produces different feature dataframes, for example for different subsets of tickers or using technical indicators instead of price data.
+Different target dataframes are also produced, for example those for different commodities or those to match the technical indicator feature dataframes, in which some initial dates are omitted.
+Before the data is saved any price data is converted into a percentage return including the target price. All the Input data is saved under Data/Inputs.
 
 ## Training
 
