@@ -7,7 +7,7 @@ The idea behind this model was to quantify the confidence of the model in each o
 ## Network
 
 The network is a TCN largely based on the design of [Bai, Kolter, Koten](https://arxiv.org/abs/1803.01271) with some minor differences
-(e.g. padding is added using a CausalConv1d layer instead of a regular Conv1d and a chomp). 
+(e.g. padding is added using a custom class CausalConv1d, instead of a regular Conv1d and a chomp). 
 The final layer of the network however is dense and produces two outputs correspoding to a mean and a variance.
 A final transformation is applied to the variance after the dense network to limit its range to positive numbers,
 this transformation was chosen such that for large values the transformation becomes linear:
