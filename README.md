@@ -14,7 +14,7 @@ this transformation was chosen such that for large values the transformation bec
 
 $y = (x+e^{-x/2})*\sigma(x)$,
 
-where $\sigma$ is the sigmoid function and $y$ is the output variance.
+where $x$ is the variance output from the dense layer, $\sigma$ is the sigmoid function and $y$ is the output variance.
 
 ## Inputs
 
@@ -107,6 +107,7 @@ than for the single gaussian based on the models average mean and stdev. Unfortu
 This failure is more than likely a result on insufficient training/input data. To begin with this model could easily be used or even improved and adapted to work with intraday price data
 rather than interday price data (which is unfortunately unavailable to me for free). 
 Likewise article data relating to commodity price could be processed using sentiment analysis and used as an input into the model. 
+
 These two options fall into the category of know unknowns in the sense that I am aware that having this data could be useful, however,
 there will also be unknown unknowns in the sense of there being useful datasets that not only do I not have access to but am also unaware of at the moment.
 
