@@ -68,7 +68,6 @@ Finally there are some additional arguments that act as switches:
 
 | Switch | Description |
 | --- | --- |
-
 | weight_hist | produces histograms for layer parameters at each batch interval which are then saved to tesorboard. |
 | print_singular | prints the loss, probability density and MAE on the test data of a gaussian using the average mean and stdev of the model predictions. |
 | early_stopping | saves the model at each evaluation and stops if test loss spikes, set as 1 normally or set to restart epoch in restart mode. |
