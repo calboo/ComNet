@@ -18,7 +18,9 @@ The final layer of the network however is dense and produces two outputs corresp
 A final transformation is applied to the variance after the dense network to limit its raange to positive numbers,
 this transformation was chosen such that for large values the transformation becomes linear:
 
-$(x+e^{-x/2})*\sigma(x)$.
+$y = (x+e^{-x/2})*\sigma(x)$,
+
+where $\sigma$ is the sigmoid function and $y$ is the output variance.
 
 ## Training
 
@@ -59,16 +61,15 @@ A table of the model hyperparameters is given below:
 | sample_noise | Proportional noise to apply to features during training| |
 | batch_size | Batch size | |
 
+The user may also specify the number of epochs to train for, the batch interval for printing training stats
+and the epoch interval evaluating the model using the test data, saving the model and saving performance stats to tensorboard.
 
+Finally there are some additional arguments that act as switches:
 
-| log_interval | How many batches to wait before logging training status | |
-| epochs | Number of epochs to train | |
-| eval_interval | How many epochs to wait before logging eval status | | 
-
-| weight_hist | whether to produce histograms for layer parameters | |
-| print_singular | whether to produce evaluation on a singular gaussian based on model output| |
-| early_stopping | save model at each eval and stop if test loss spikes, in resume mode load from specified epoch |
-| resume | resume traning of a model from saved version | |
+- weight_hist - produces histograms for layer parameters at each batch interval which are then saved to tesorboard.
+- print_singular - prints the loss, probability density and MAE on the test data of a gaussian using the average mean and stdev of the model predictions.
+- early_stopping - saves the model at each evaluation and stops if test loss spikes, set as 1 normally or set to restart epoch in restart mode.
+- resume - resume traning of a model from saved version.
 
 
 
