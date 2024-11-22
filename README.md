@@ -37,8 +37,8 @@ Model arguments are specified using command line arguments using the argparse fu
 ## Model Arguments
 
 For a detailed list of model arguments please read the parse_arguments function in ComNet_Train.py.
-Here I will provide a brief overview. The few arguments are file names and locations: 
-inputs_file_name, targets_file_name, save_dir, name, version. There is an option for GPU acceleration gpu_accel.
+Here I will provide a brief overview. The first few arguments are file names and locations: 
+inputs_file_name, targets_file_name, save_dir, name, version. There is also an option for GPU acceleration gpu_accel.
 
 Following this the model hyperparameters are given:
 The model configuration is provided as a json string through the argument model_config;
