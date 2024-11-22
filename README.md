@@ -22,9 +22,56 @@ $(x+e^{-x/2})*\sigma(x)$.
 
 ## Training
 
+Training is called notebook Main Script Experiments, which calls the main script in ComNet_Train.py.
 The network was build to use the Apple MPS Framework for GPU acceleration but should also work with CUDA
 furthermore the training should work on a distributed network although this functionality has not yet been tested.
-Training is done using dataloaders for the train and test sets which are custom datasets that select data between start and end dates specified in the main script.
-Hyperparameters are specified on the command line using the argparse function, options are given in the table below.
+Training is done using dataloaders for the train and test sets;
+these are custom datasets that select dates between specified start and end dates and return
+feature data for that date and a specified number of days and target data for that date alone..
 Before training begins the hyperparameters are saved to a json file; 
 at specified intevals during training the model is saved to a pkl file and statistics are both printed and are saved to tensorboard.
+Model arguments are specified using command line arguments using the argparse functio.
+
+## Model Arguments
+
+For a detailed list of model arguments please read the parse_arguments function in ComNet_Train.py.
+Here I will provide a brief overview. The few arguments are file names and locations: 
+inputs_file_name, targets_file_name, save_dir, name, version. There is an option for GPU acceleration gpu_accel.
+
+Following this the model hyperparameters are given:
+The model configuration is provided as a json string through the argument model_config;
+optionally a learning rate scheduler can be implemented by providing a json string for the argument lr_config;
+finally there are arguments for the optimizer, learning rate, weight decay, sample noise and batch size.
+A table of the model hyperparameters is given below:
+
+| Model Argument | Description | Options |
+| --- | --- | --- |
+| history_length | length of each channel and the length of feature data fed into the model (given in json string for model_config)| |
+| num_inputs | number of input channels (given in json string for model_config)| |
+| num_channels | array giving the number of channels between each temporal block; the length of this array gives the depth of the network (given in json string for model_config)| |
+| activation | activation function to use in the TCN (given in json string for model_config) | gelu, relu, lrelu |
+| kernel_size | kernal size for convolutions (given in json string for model_config) | |
+| dropout | proportion of dropout channels, dropout is applied to channels not nodes (given in json string for model_config) | |
+| lr_config | json string configuration of the lr scheduler, template lr_config json strings for each method are given in Main Script Experiments notebook| plateau, cosine_warm and one_cycle each with additional specific options |
+| optimizer | Optimizer choice | AdamW, SGD, SGD_nesterov |
+| lr | Learning rate | |
+| weight_decay | Weight decay | |
+| sample_noise | Proportional noise to apply to features during training| |
+| batch_size | Batch size | |
+
+
+
+| log_interval | How many batches to wait before logging training status | |
+| epochs | Number of epochs to train | |
+| eval_interval | How many epochs to wait before logging eval status | | 
+
+| weight_hist | whether to produce histograms for layer parameters | |
+| print_singular | whether to produce evaluation on a singular gaussian based on model output| |
+| early_stopping | save model at each eval and stop if test loss spikes, in resume mode load from specified epoch |
+| resume | resume traning of a model from saved version | |
+
+
+
+
+
+                        
