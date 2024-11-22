@@ -75,7 +75,7 @@ Finally there are some additional arguments that act as switches:
 | Switch | Description |
 | --- | --- |
 | weight_hist | produces histograms for layer parameters at each batch interval which are then saved to tesorboard. |
-| print_singular | prints the loss, probability density and MAE on the test data of a gaussian using the average mean and stdev of the model predictions. |
+| print_singular | prints the loss, probability density and MAE of the mean on the test data of a gaussian using the average mean and stdev of the model predictions. |
 | early_stopping | saves the model at each evaluation and stops if test loss spikes, set as 1 normally or set to restart epoch in restart mode. |
 | resume | resume traning of a model from saved version. |
 
@@ -92,12 +92,23 @@ The learning rate function is based on [Sylvian Gugger's website](https://sgugge
 
 The learning rate finder can be run from Main Script Experiments, using the cell that calls the lr_finder script in ComNet_lrfind.py.
 This script has a different set of command line arguments that can either be read from the example in Main Script Experiments or from ComNet_lrfind itself.
+
 Essentially the learning rate is increased from minimum to maximum over a specified number of epochs and the test loss is plotted against the log of the learning rate.
 This process is repeated for a specified number of times and then all of the graphs are plotted on the same axis with an additional graph
 plotting the average loss at each log learning rate over all the runs, finally the minima of this aggregate plot is given as the maximum learning rate for a given set of hyperparameters.
 
+## Results
 
+Although the model trains correctly and was a good excercise in building such a model, the test loss never seems to reduce much beyond its initial value.
+The real test as to whether the model works can be seen using the option print_singular; 
+if the model has true predictive capability beyond simply picking a good mean and variance for the returns then the test loss and MAE of the mean would be smaller for the model
+than for the single gaussian based on the models average mean and stdev. Unfortunately this was never the case in my experiments.
 
+This failure is more than likely a result on insufficient training/input data. To begin with this model could easily be used or even improved and adapted to work with intraday price data
+rather than interday price data (which is unfortunately unavailable to me for free). 
+Likewise article data relating to commodity price could be processed using sentiment analysis and used as an input into the model. 
+These two options fall into the category of know unknowns in the sense that I am aware that having this data could be useful, however,
+there will also be unknown unknowns in the sense of there being useful datasets that not only do I not have access to but am also unaware of at the moment.
 
-
+In summary, this is a good toy model for asset price prediction using a TCN but the model has not yet produced any meaninful results on test data and could certainly be improved upon in the future.
                         
