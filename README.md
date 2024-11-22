@@ -66,10 +66,13 @@ and the epoch interval evaluating the model using the test data, saving the mode
 
 Finally there are some additional arguments that act as switches:
 
-- weight_hist - produces histograms for layer parameters at each batch interval which are then saved to tesorboard.
-- print_singular - prints the loss, probability density and MAE on the test data of a gaussian using the average mean and stdev of the model predictions.
-- early_stopping - saves the model at each evaluation and stops if test loss spikes, set as 1 normally or set to restart epoch in restart mode.
-- resume - resume traning of a model from saved version.
+| Switch | Description |
+| --- | --- |
+
+| weight_hist | produces histograms for layer parameters at each batch interval which are then saved to tesorboard. |
+| print_singular | prints the loss, probability density and MAE on the test data of a gaussian using the average mean and stdev of the model predictions. |
+| early_stopping | saves the model at each evaluation and stops if test loss spikes, set as 1 normally or set to restart epoch in restart mode. |
+| resume | resume traning of a model from saved version. |
 
 
 
