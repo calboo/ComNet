@@ -331,7 +331,7 @@ def main(args):
             # Make a graphs of samples in the test set
             
             if args.log_interval==0:
-                graph_test(TCN_model, Test_Loader)
+                graph_test(TCN_model, Test_Loader, numplots = 20)
                 
             # Break if test loss spikes
 
@@ -340,8 +340,6 @@ def main(args):
                 min_test_loss = min(min_test_loss, torch.mean(loss))
                 if torch.mean(loss) > 1.5 * min_test_loss:
                     print("Test loss is spiking, ending run...","\n")
-                    break
-                if min_test_loss < 0.4:
                     break
 
             # Write eval metrics to tensorboard event
