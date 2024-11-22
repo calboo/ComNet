@@ -88,7 +88,7 @@ Please note that epochs should be set to one in evaluation mode, otherwise the e
 ## lr_find
 
 A learning rate finder was also written to find optimal learning rates and maximum learning rates for the warm_cosine and one_cycle schedulers.
-The learning rate function is based on [Sylvian Gugger's website](https://sgugger.github.io/how-do-you-find-a-good-learning-rate.html) and [David Silva's pytorch-lr-finder]([pytorch-lr-finder ](https://github.com/davidtvs/pytorch-lr-finder).
+The learning rate function is based on [Sylvian Gugger's website](https://sgugger.github.io/how-do-you-find-a-good-learning-rate.html) and [David Silva's pytorch-lr-finder](https://github.com/davidtvs/pytorch-lr-finder).
 
 The learning rate finder can be run from Main Script Experiments, using the cell that calls the lr_finder script in ComNet_lrfind.py.
 This script has a different set of command line arguments that can either be read from the example in Main Script Experiments or from ComNet_lrfind itself.
